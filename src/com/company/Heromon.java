@@ -3,6 +3,7 @@ package com.company;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class Heromon {
 
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class Heromon {
         ArrayList<Powers>Powers = new ArrayList<Powers>();
         ArrayList<Items>Items = new ArrayList<Items>();
 
-        //ArrayList<Items>Inventory = new ArrayList<Items>();
+        ArrayList<Items>Inventory = new ArrayList<Items>();
 
        //Powers
         Powers telekinesis = new Powers("Telekinesis",200, 80, "Mind Control", 30,"Move and manipulate objects with your mind. Increases attack by 200 energy points, but depletes your own energy by 80 points. If faced with an enemy bearing Mind Control, an extra 30 points of energy are expended in defense.");
@@ -78,25 +79,44 @@ public class Heromon {
        System.out.println(yourName + ", please select the number of your chosen power from the list below.");
         for(int i = 0; i < Powers.size(); i++){
             System.out.print(i + ") ");
-            System.out.println(Powers.get((i)));
+            System.out.println((Powers.get((i))));
             System.out.println();
         }
 
 
         Scanner scanner1 = new Scanner (System.in);
-        String choice = scanner.nextLine();
-        int choice1 = Integer.parseInt(choice);
-        while(choice1<0 && choice1>Powers.size()){
-            System.out.println("Invalid selection. Please choose between 0 and 7.");
-            choice1 = scanner.nextLine()
+        String choice = scanner1.nextLine();
+        Powers yourPower = null;
+        Character hero = null;
+        if (choice.equals("0") || choice.equals("1") || choice.equals("2") || choice.equals("3") || choice.equals("4") || choice.equals("5") || choice.equals("6") || choice.equals("7")){
+            int choice1 = Integer.parseInt(choice);
+            System.out.print("You have chosen " + (Powers.get(choice1)).getName());
+            System.out.println("!");
+            yourPower = new Powers(Powers.get(choice1));
+            hero = new Character(yourName, yourPower,1000, Inventory);
+           // System.out.println(hero);
 
         }
+        else {
+            while(!choice.equals("0") && !choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5") && !choice.equals("6") && !choice.equals("7")){
+
+                System.out.println("Invalid selection. Please choose between 0 and 7.");
+                choice = scanner1.nextLine();
+                int choice1 = Integer.parseInt(choice);
+                System.out.print("You have chosen " + (Powers.get(choice1)).getName());
+                System.out.println("!");
+                yourPower = (Powers.get(choice1));
+                hero = new Character(yourName, yourPower,1000, Inventory);
+            }
+        }
+       // System.out.println(hero);
+        System.out.println();
+        System.out.println("Brave traveler, be on the look-out for monsters!");
 
 
 
 
 
-        //Character hero = new Character(yourName, yourPower, 1000);
 
     }
 }
