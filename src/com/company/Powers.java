@@ -18,16 +18,26 @@ public class Powers {
         this.ifWeakness = ifWeakness;
         this.description = description;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public String toString(){
+    public String toString() {
+
         return name + ": " + description;
     }
 
-   // public static String ChoosePower(/*array?*/){
-
-    //}
+    Powers(Powers other){
+        name = other.name;
+        inflictDamage = other.inflictDamage;
+        energyDepletion = other.energyDepletion;
+        weakness = other.weakness;
+        ifWeakness = other.ifWeakness;
+        description = other.description;
+    }
 
 }
+
+
+
