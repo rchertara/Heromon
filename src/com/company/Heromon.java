@@ -9,8 +9,8 @@ public class Heromon {
 
         ArrayList<Powers>Powers = new ArrayList<Powers>();
         ArrayList<Items>Items = new ArrayList<Items>();
-        ArrayList<Items>Inventory = new ArrayList<Items>();
-        ArrayList<Object>CharacterInfo = new ArrayList<Object>();
+
+        //ArrayList<Items>Inventory = new ArrayList<Items>();
 
        //Powers
         Powers telekinesis = new Powers("Telekinesis",200, 80, "Mind Control", 30,"Move and manipulate objects with your mind. Increases attack by 200 energy points, but depletes your own energy by 80 points. If faced with an enemy bearing Mind Control, an extra 30 points of energy are expended in defense.");
@@ -73,7 +73,6 @@ public class Heromon {
         System.out.println("Your heroic quest begins now. Please enter your name.");
         Scanner scanner = new Scanner(System.in);
         String yourName = scanner.nextLine();
-        CharacterInfo.add(yourName);
         System.out.println();
 
        System.out.println(yourName + ", please select the number of your chosen power from the list below.");
@@ -86,15 +85,12 @@ public class Heromon {
 
         Scanner scanner1 = new Scanner (System.in);
         String choice = scanner.nextLine();
-       /* int choice1 = Integer.parseInt(choice);
-            for (int k = 0; k <= Powers.size(); k++) {
-                if (choice1 == k) {
-                    break;
-                } else {
-                    System.out.println("Invalid choice, please select again.");
-                }
+        int choice1 = Integer.parseInt(choice);
+        while(choice1<0 && choice1>Powers.size()){
+            System.out.println("Invalid selection. Please choose between 0 and 7.");
+            choice1 = scanner.nextLine()
 
-            } */
+        }
 
 
 
