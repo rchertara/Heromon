@@ -32,6 +32,38 @@ public class Character {
         return null;
     }
 
+    public Powers getYourPower() {
+        return yourPower;
+    }
+
+    public void setYourPower(Powers yourPower) {
+        this.yourPower = yourPower;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    public ArrayList<Items> getInventory() {
+        return Inventory;
+    }
+
+    public void setInventory(ArrayList<Items> inventory) {
+        Inventory = inventory;
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     //public static boolean Win() {
        // if (/*enemy energy level == 0*/) {
            // return true;
