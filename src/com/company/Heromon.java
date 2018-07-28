@@ -43,7 +43,7 @@ public class Heromon {
         Monster shadowMonster = new Monster("Shadow Monster", mindControl, 1000/*, "Beware of dark corners, home to the Shadow Monster. Manipulative and highly dangerous, it takes no prisoners!"*/);
         Monsters.add(shadowMonster);
 
-        Monster seaMonster = new Monster("Reptilian Monster", morph, 1000/*, "The Reptilian Monster lurks in the slimy bogs of the south. Just when you think you're about to defeat it, the Monster multiplies!"*/);
+        Monster seaMonster = new Monster("sea Monster", morph, 1000/*, "The Reptilian Monster lurks in the slimy bogs of the south. Just when you think you're about to defeat it, the Monster multiplies!"*/);
         Monsters.add(seaMonster);
 
         Monster lavaMonster = new Monster("Lava Monster", heatVision, 1000/*, "Take care, or you'll find yourself in the fiery clutches of the Lava Monster, hungry for its next meal."*/);
@@ -142,7 +142,7 @@ public class Heromon {
         System.out.println(Monster.Generate(Monsters)); //to call methods from other classes, use class name dot method and then input
         System.out.println();
 
-        //while(hero.energy > 0 && )
+     //   while(hero.energy > 0 ) //generate getters and setters
 
 
 
