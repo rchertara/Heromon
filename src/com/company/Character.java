@@ -38,7 +38,7 @@ public class Character {
 
     }
 
-    public void useItem(){
+    public void useItem(Monster mon){
         inDefense=false;
         //first show user all items
         if(getInventory().size()==0){
@@ -60,11 +60,18 @@ public class Character {
 
             Items item=getInventory().get(choice);
 
+            if(item.getInflictDamage()==0){
+                this.energy=this.energy+item.getHealing();
+                System.out.println(name+"used"+item.getName()+",healed up by"+item.getHealing());
+                getInventory().remove(choice);
 
+            }
+            else{
+                mon.energy=mon.energy-item.getInflictDamage();
+                System.out.println(name+"used"+item.getName()+",inflicted"+item.getInflictDamage() +"points of damage ");
+                getInventory().remove(choice);
 
-
-
-
+            }
 
 
         }
