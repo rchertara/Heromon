@@ -81,11 +81,20 @@ public class Character {
     }
 
 
-    public void Flee(/*monster? or takes in energy int?*/) {
+    public void Flee(Monster mon) {
         //if energy is too low, provide flee option;
         //also needs to remove one item
         inDefense=false;
+        System.out.println(name+" has fleed from"+ mon.name);
+        if(getInventory().size()!=0) {
+            System.out.println(name + " has dropped" + Inventory.get(getInventory().size() - 1).getName());
+            Inventory.remove(getInventory().size()-1);
 
+        }
+    }
+
+    public void Power(){
+        //Krisztina do this lol
     }
 
     public Powers getYourPower() {
