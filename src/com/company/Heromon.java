@@ -6,13 +6,20 @@ import java.util.ArrayList;
 
 public class Heromon {
 
+   /* public static boolean roundOver(int heroEnergy, int monsterEnergy){
+        if(hero.getEnergy() == 0 || currentMonster.getEnergy() == 0) {
+            return true;
+        }
+        return false;
+    } */
+
     public static void main(String[] args) {
 
         ArrayList<Powers>Powers = new ArrayList<Powers>();
         ArrayList<Monster>Monsters = new ArrayList<Monster>();
         ArrayList<Items>Items = new ArrayList<Items>();
 
-        ArrayList<Items>Inventory = new ArrayList<Items>();
+       //ArrayList<Items>Inventory = new ArrayList<Items>();
 
        //Powers
         Powers telekinesis = new Powers("Telekinesis",200, 80, "Mind Control", 30,"Move and manipulate objects with your mind. Increases attack by 200 energy points, but depletes your own energy by 80 points. If faced with an enemy bearing Mind Control, an extra 30 points of energy are expended in defense.");
@@ -40,28 +47,28 @@ public class Heromon {
         Powers.add(mindControl);
 
         //Monsters
-        Monster shadowMonster = new Monster("Shadow Monster", mindControl, 1000/*, "Beware of dark corners, home to the Shadow Monster. Manipulative and highly dangerous, it takes no prisoners!"*/);
+        Monster shadowMonster = new Monster("Shadow Monster", mindControl, 500/*, "Beware of dark corners, home to the Shadow Monster. Manipulative and highly dangerous, it takes no prisoners!"*/);
         Monsters.add(shadowMonster);
 
-        Monster seaMonster = new Monster("sea Monster", morph, 1000/*, "The Reptilian Monster lurks in the slimy bogs of the south. Just when you think you're about to defeat it, the Monster multiplies!"*/);
+        Monster seaMonster = new Monster("Sea Monster", morph, 500/*, "The Reptilian Monster lurks in the slimy bogs of the south. Just when you think you're about to defeat it, the Monster multiplies!"*/);
         Monsters.add(seaMonster);
 
-        Monster lavaMonster = new Monster("Lava Monster", heatVision, 1000/*, "Take care, or you'll find yourself in the fiery clutches of the Lava Monster, hungry for its next meal."*/);
+        Monster lavaMonster = new Monster("Lava Monster", heatVision, 500/*, "Take care, or you'll find yourself in the fiery clutches of the Lava Monster, hungry for its next meal."*/);
         Monsters.add(lavaMonster);
 
-        Monster windMonster = new Monster("Wind Monster", teleportation, 1000);
+        Monster windMonster = new Monster("Wind Monster", teleportation, 500);
         Monsters.add(windMonster);
 
-        Monster spiritMonster = new Monster("Spirit Monster", invisibility, 1000);
+        Monster spiritMonster = new Monster("Spirit Monster", invisibility, 500);
         Monsters.add(spiritMonster);
 
-        Monster stoneMonster = new Monster("Stone Monster", foresight, 1000);
+        Monster stoneMonster = new Monster("Stone Monster", foresight, 500);
         Monsters.add(stoneMonster);
 
-        Monster iceMonster = new Monster("Ice Monster", freezeTime, 1000);
+        Monster iceMonster = new Monster("Ice Monster", freezeTime, 500);
         Monsters.add(iceMonster);
 
-        Monster electricMonster = new Monster ("Electric Monster", telekinesis, 1000);
+        Monster electricMonster = new Monster ("Electric Monster", telekinesis, 500);
         Monsters.add(electricMonster);
 
         //Items
@@ -118,7 +125,7 @@ public class Heromon {
             System.out.print("You have chosen " + (Powers.get(choice1)).getName());
             System.out.println("!");
             yourPower = new Powers(Powers.get(choice1));
-            hero = new Character(yourName, yourPower,1000, Inventory);
+            hero = new Character(yourName, yourPower);
            // System.out.println(hero);
 
         }
@@ -131,7 +138,7 @@ public class Heromon {
                 System.out.print("You have chosen " + (Powers.get(choice1)).getName());
                 System.out.println("!");
                 yourPower = (Powers.get(choice1));
-                hero = new Character(yourName, yourPower,1000, Inventory);
+                hero = new Character(yourName, yourPower);
             }
         }
 
@@ -139,10 +146,45 @@ public class Heromon {
         System.out.println();
         System.out.println("Brave traveler, be on the look-out for monsters!");
         System.out.println("There's rustling in those bushes...");
-        System.out.println(Monster.Generate(Monsters)); //to call methods from other classes, use class name dot method and then input
+        Monster currentMonster = Monster.Generate(Monsters);//to call methods from other classes, use class name dot method and then input
+        System.out.println(currentMonster);
         System.out.println();
 
+
      //   while(hero.energy > 0 ) //generate getters and setters
+
+        //*****BATTLE START*****
+
+        ArrayList<String>battleOptions = new ArrayList<String>();
+        battleOptions.add("Attack");
+        battleOptions.add("Defend");
+        battleOptions.add("Flee");
+        battleOptions.add("Power On");
+        battleOptions.add("Use an item");
+
+        while(hero.getEnergy() > 0 ){
+            System.out.println("Please select the number of your desired course of action."); //function?
+            for(int j = 0; j< battleOptions.size(); j++){
+                System.out.print(j + ") ");
+                System.out.println(battleOptions.get(j));
+                System.out.println();
+                Scanner scanner2 = new Scanner(System.in);
+                String option = scanner.nextLine();
+
+                if(option.equals("0") || choice.equals("1") || choice.equals("2") || choice.equals("3") || choice.equals("4"))
+                int option1 = Integer.parseInt(option);
+
+            }
+
+            //at the start of each turn, prompt user to turn power on or off and to use any items
+            //print updated damage to
+
+
+
+
+
+        }
+
 
 
 

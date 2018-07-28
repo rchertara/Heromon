@@ -29,4 +29,7 @@ public class Monster {
 
     }
 
+    public int getEnergy() {
+        return energy;
+    }
 }

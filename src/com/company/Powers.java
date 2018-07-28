@@ -80,6 +80,13 @@ public class Powers {
     public void setDescription(String description) {
         this.description = description;
     }
+
+   // public boolean On(String input){
+        //if(input.toLowerCase()
+
+    //}
+
+
 }
 
 

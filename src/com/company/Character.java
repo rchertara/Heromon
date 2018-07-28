@@ -10,14 +10,16 @@ public class Character {
     private Powers yourPower;
     boolean inDefense;
     private int energy;
+    private int lives;
     ArrayList<Items> Inventory;
 
-    public Character(String name, Powers yourPower, int energy, ArrayList<Items> Inventory) {
+    public Character(String name, Powers yourPower) {
 
         this.name = name;
         this.yourPower = yourPower; //?
-        this.energy = energy;
-        this.Inventory = Inventory;
+        this.energy = 1000;
+        this.lives = 3;
+        this.Inventory = new ArrayList<Items>();
     }
 
     public String toString() {
@@ -111,10 +113,8 @@ public class Character {
     public void setName(String name) {
         this.name = name;
     }
-    //public static boolean Win() {
-       // if (/*enemy energy level == 0*/) {
-           // return true;
-       // }
+
+
 
    // }
         //public int ifWeakness(String weakness){
