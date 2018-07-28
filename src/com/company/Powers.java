@@ -37,6 +37,49 @@ public class Powers {
         description = other.description;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getInflictDamage() {
+        return inflictDamage;
+    }
+
+    public void setInflictDamage(int inflictDamage) {
+        this.inflictDamage = inflictDamage;
+    }
+
+    public int getEnergyDepletion() {
+        return energyDepletion;
+    }
+
+    public void setEnergyDepletion(int energyDepletion) {
+        this.energyDepletion = energyDepletion;
+    }
+
+    public String getWeakness() {
+        return weakness;
+    }
+
+    public void setWeakness(String weakness) {
+        this.weakness = weakness;
+    }
+
+    public int getIfWeakness() {
+        return ifWeakness;
+    }
+
+    public void setIfWeakness(int ifWeakness) {
+        this.ifWeakness = ifWeakness;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 
 
