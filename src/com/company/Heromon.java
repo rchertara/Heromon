@@ -9,6 +9,7 @@ public class Heromon {
     public static void main(String[] args) {
 
         ArrayList<Powers>Powers = new ArrayList<Powers>();
+        ArrayList<Monster>Monsters = new ArrayList<Monster>();
         ArrayList<Items>Items = new ArrayList<Items>();
 
         ArrayList<Items>Inventory = new ArrayList<Items>();
@@ -38,7 +39,30 @@ public class Heromon {
         Powers mindControl = new Powers ("Mind Control", 350, 310, "",0,"The most feared of powers. Control your enemy's thoughts and actions. Increases attack by 350 points, but depletes your own energy by 310 points. No weaknesses." );
         Powers.add(mindControl);
 
+        //Monsters
+        Monster shadowMonster = new Monster("Shadow Monster", mindControl, 1000/*, "Beware of dark corners, home to the Shadow Monster. Manipulative and highly dangerous, it takes no prisoners!"*/);
+        Monsters.add(shadowMonster);
 
+        Monster seaMonster = new Monster("Reptilian Monster", morph, 1000/*, "The Reptilian Monster lurks in the slimy bogs of the south. Just when you think you're about to defeat it, the Monster multiplies!"*/);
+        Monsters.add(seaMonster);
+
+        Monster lavaMonster = new Monster("Lava Monster", heatVision, 1000/*, "Take care, or you'll find yourself in the fiery clutches of the Lava Monster, hungry for its next meal."*/);
+        Monsters.add(lavaMonster);
+
+        Monster windMonster = new Monster("Wind Monster", teleportation, 1000);
+        Monsters.add(windMonster);
+
+        Monster spiritMonster = new Monster("Spirit Monster", invisibility, 1000);
+        Monsters.add(spiritMonster);
+
+        Monster stoneMonster = new Monster("Stone Monster", foresight, 1000);
+        Monsters.add(stoneMonster);
+
+        Monster iceMonster = new Monster("Ice Monster", freezeTime, 1000);
+        Monsters.add(iceMonster);
+
+        Monster electricMonster = new Monster ("Electric Monster", telekinesis, 1000);
+        Monsters.add(electricMonster);
 
         //Items
         Items fireball = new Items("Fireball", 80, "With fire at your fingertips, you can incinerate your enemies! Does 80 points of damage.", 0);
@@ -71,6 +95,8 @@ public class Heromon {
         Items sliceOfPizza = new Items("Slice of Pizza", 0, "Low on energy? Stock up 80 points of energy with a good ol' slice of pizza!", 80);
         Items.add(sliceOfPizza);
 
+        //ACTUAL GAMEPLAY
+
         System.out.println("Your heroic quest begins now. Please enter your name.");
         Scanner scanner = new Scanner(System.in);
         String yourName = scanner.nextLine();
@@ -82,7 +108,6 @@ public class Heromon {
             System.out.println((Powers.get((i))));
             System.out.println();
         }
-
 
         Scanner scanner1 = new Scanner (System.in);
         String choice = scanner1.nextLine();
@@ -109,9 +134,18 @@ public class Heromon {
                 hero = new Character(yourName, yourPower,1000, Inventory);
             }
         }
+
        // System.out.println(hero);
         System.out.println();
         System.out.println("Brave traveler, be on the look-out for monsters!");
+        System.out.println("There's rustling in those bushes...");
+        System.out.println(Monster.Generate(Monsters)); //to call methods from other classes, use class name dot method and then input
+        System.out.println();
+
+        //while(hero.energy > 0 && )
+
+
+
 
 
 

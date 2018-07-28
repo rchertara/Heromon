@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Items {
 
+
     private String name;
     private int inflictDamage;
     private String description;
