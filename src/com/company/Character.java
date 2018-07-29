@@ -27,6 +27,10 @@ public class Character {
         //this.powerOn = false;
     }
 
+    public void healthStatusHero(){
+        System.out.println(name + " currently has " + this.energy + " points of energy.");
+    }
+
     public String toString() {
         return name + " has the power of " + yourPower.getName() + ".";
     }
@@ -41,9 +45,11 @@ public class Character {
             mon.energy = mon.energy - randomNum;
             System.out.println(name + " attacked, but monster has defended so " + mon.name + " only lost " + randomNum + " points of energy");
         }
+
         else {
             mon.energy = mon.energy - randomNum;
             System.out.println(name + " attacked, " + mon.name + " has lost " + randomNum + " points of energy!");
+
         }
         }
 

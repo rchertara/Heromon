@@ -22,6 +22,10 @@ public class Monster {
 
     }
 
+    public void healthStatusMonster(){
+        System.out.println("The " + name + " currently has" + this.energy + " points of energy.");
+    }
+
     public void aiMove(Character hero){
 
         if(this.energy<=100){
@@ -75,7 +79,7 @@ public class Monster {
         }
         hero.setEnergy(hero.getEnergy()-randomNum);
         if(!hero.inDefense) {
-            System.out.println(name + " attacked, " + hero.getName() + " has taken" + randomNum + " points of damage!");
+            System.out.println(name + " attacked, " + hero.getName() + " has taken " + randomNum + " points of damage!");
         }
         else{
             System.out.println(name + " attacked however, " + hero.getName() + "defended, received only" + randomNum + " points of damage!");

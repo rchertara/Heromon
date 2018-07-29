@@ -192,6 +192,7 @@ public class Heromon {
                         hero.Defend();
                     } else if (option1 == 2) {
                         hero.Flee(currentMonster);
+                        break;
 
                     } else if (option1 == 3) {
                         //Character.powerOn = true;
@@ -211,6 +212,7 @@ public class Heromon {
 
                                 } else if (option2 == 2) {
                                     hero.Flee(currentMonster);
+                                    break;
 
                                 } else if (option2 == 3) {
                                     //Character.powerOn = true;
@@ -233,6 +235,7 @@ public class Heromon {
 
                                 } else if (option2 == 2) {
                                     hero.Flee(currentMonster);
+                                    break;
 
                                 } else if (option2 == 3) {
                                     //Character.powerOn = true;
@@ -260,6 +263,7 @@ public class Heromon {
                     }
                     else if(option1 == 2){
                         hero.Flee(currentMonster);
+                        break;
 
                     }
                     else if(option1 == 3){
@@ -294,6 +298,7 @@ public class Heromon {
                                 }
                                 else if(option2 == 2){
                                     hero.Flee(currentMonster);
+                                    break;
 
                                 }
                                 else if(option2 == 3){
