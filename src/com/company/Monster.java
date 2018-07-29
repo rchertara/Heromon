@@ -41,6 +41,7 @@ public class Monster {
 
     public void powerOn(Character hero){ //always on? this indicates that the monster is using power AGAINST
         //powerOn = true;
+        monsterDefense=false;
        if(hasWeakness(hero)){
            hero.setEnergy(hero.getEnergy()-(this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()));
            System.out.println(this.name + " has used its super effective power against you, depleting " + (this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()) + " points of your energy." );

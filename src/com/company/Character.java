@@ -104,6 +104,7 @@ public class Character {
 
     public void PowerOn(Monster mon){ //ask to turn power on, type yes
         //powerOn = true;
+        inDefense=false;
         if(hasWeakness(mon)){
             mon.energy = mon.energy - (this.yourPower.getInflictDamage()+mon.monsterPower.getIfWeakness());
             System.out.println("You have used your super effective power against " + mon.name + " and have depleted " + (this.yourPower.getInflictDamage()+mon.monsterPower.getIfWeakness()) + " points of its energy." );
