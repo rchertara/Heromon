@@ -11,6 +11,8 @@ public class Character {
     boolean inDefense;
     private int energy;
     private int lives;
+    boolean powerOn;
+
     ArrayList<Items> Inventory;
 
     public Character(String name, Powers yourPower) {
@@ -20,6 +22,8 @@ public class Character {
         this.energy = 1000;
         this.lives = 3;
         this.Inventory = new ArrayList<Items>();
+        this.inDefense = false;
+        this.powerOn = false;
     }
 
     public String toString() {
@@ -31,7 +35,7 @@ public class Character {
         //random damage on enemy; report levels]
         int randomDam= (int) Math.random(); //confirm what damage range
         mon.energy=mon.energy-randomDam;
-        System.out.println(name+ " attacked, "+ mon.name+ " has lost"+ randomDam+" points of energy!");
+        System.out.println(name + " attacked, "+ mon.name+ " has lost"+ randomDam+" points of energy!");
         }
 
     public void Defend() {
@@ -88,12 +92,20 @@ public class Character {
         }
     }
 
-    public void Power(){
+
+    public void PowerOn(Monster mon){ //ask to turn power on, type yes
+        powerOn = true;
+        mon.energy = mon.energy - this.yourPower.getInflictDamage();
+        System.out.println("You have used your power against " + mon.name + " and have depleted " + this.yourPower.getInflictDamage() + " points of its energy." );
+
         //Krisztina do this lol
     }
 
-    public void ifWeakness(Monster mon, Character hero){
-        if((mon.monsterPower.getName()).equals(character.powers.getifWeakness))//character has power, go into Power properties
+    public void ifWeakness(Monster mon){
+        if((mon.monsterPower.getName()).equals(this.yourPower.getWeakness())){
+           this.energy = (this.energy - this.yourPower.getIfWeakness());  //character has power, go into Power properties
+            System.out.println("You have expended " + this.yourPower.getIfWeakness() + "points of energy protecting against " + mon.name + "'s power.");
+        }
     }
 
     public Powers getYourPower() {

@@ -130,10 +130,11 @@ public class Heromon {
 
         }
         else {
-            while(!choice.equals("0") && !choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5") && !choice.equals("6") && !choice.equals("7")){
+            while(!choice.equals("0") && !choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5") && !choice.equals("6") && !choice.equals("7")) {
 
                 System.out.println("Invalid selection. Please choose between 0 and 7.");
                 choice = scanner1.nextLine();
+            //} check if this is better for loop
                 int choice1 = Integer.parseInt(choice);
                 System.out.print("You have chosen " + (Powers.get(choice1)).getName());
                 System.out.println("!");
@@ -162,8 +163,11 @@ public class Heromon {
         battleOptions.add("Power On");
         battleOptions.add("Use an item");
 
-        while(hero.getEnergy() > 0 ){
-            System.out.println("Please select the number of your desired course of action."); //function?
+        while(hero.getEnergy() > 0 ){ // Check this error with the static/non-static stuff*******
+
+            Character.ifWeakness();
+
+            System.out.println("Please select the number of your desired course of action."); //function? if item is granted call function and print out, add to inventory
             for(int j = 0; j< battleOptions.size(); j++) {
                 System.out.print(j + ") ");
                 System.out.println(battleOptions.get(j));
@@ -173,6 +177,56 @@ public class Heromon {
 
                 if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4")) {
                     int option1 = Integer.parseInt(option);
+                    System.out.println("You have chosen to " + battleOptions.get(option1));
+
+                    if(option1 == 0){
+                        Character.Attack(currentMonster);
+
+                    }
+                    else if(option1 == 1){
+                        Character.Defend(currentMonster);
+                    }
+                    else if(option1 == 2){
+                        Character.Flee(currentMonster);
+
+                    }
+                    else if(option1 == 3){
+                        //Character.powerOn = true;
+                        Character.PowerOn(currentMonster);
+                    }
+                    else{
+                        Character.useItem(currentMonster);
+
+                    }
+                }
+                else{
+                    while(!option.equals("0") && !option.equals("1") && !option.equals("2") && !option.equals("3") && !option.equals("4")) {
+                        System.out.println("Not valid selection. Please choose between 0 and 4.");
+                        option = scanner.nextLine();
+                    }
+                        int option1 = Integer.parseInt(option);
+                        System.out.println("You have chosen to " + battleOptions.get(option1));
+
+                    if(option1 == 0){
+                        Character.Attack(currentMonster);
+                    }
+                    else if(option1 == 1){
+                        Character.Defend(currentMonster);
+
+                    }
+                    else if(option1 == 2){
+                        Character.Flee(currentMonster);
+
+                    }
+                    else if(option1 == 3){
+                        //Character.powerOn = true;
+                        Character.PowerOn(currentMonster);
+                    }
+                    else{
+                        Character.useItem(currentMonster);
+                    }
+
+                    //now wait for monster to attack!!
 
                 }
             }

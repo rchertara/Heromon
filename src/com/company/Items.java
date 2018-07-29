@@ -23,10 +23,13 @@ public class Items {
         return name + ": " + description;
     }
 
-   public static String GrantItem(ArrayList<Items> Items){
+   public static Items GrantItem(ArrayList<Items> Items){
        //if wins battle
         Random random = new Random();
-       return "You have been granted the " + Items.get(random.nextInt(Items.size()));
+        return Items.get(random.nextInt(Items.size()));
+        //need to add to inventory, print statement
+       // character.Inventory.add(newItem);
+       //System.out.println("You have been granted the " + ;
     }
 
     public String getName() {
