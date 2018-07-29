@@ -57,7 +57,7 @@ public class Character {
         inDefense=false;
         //first show user all items
         if(getInventory().size()==0){
-            System.out.println("You have no items.");
+            System.out.println("You have no items. Please select a different option.");
             return;
         }
         else{

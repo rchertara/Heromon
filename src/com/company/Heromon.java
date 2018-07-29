@@ -175,8 +175,8 @@ public class Heromon {
             System.out.println("Please select the number of your desired course of action."); //function? if item is granted call function and print out, add to inventory
             for(int j = 0; j< battleOptions.size(); j++) {
                 System.out.print(j + ") ");
-                System.out.println(battleOptions.get(j));
-                System.out.println();
+                System.out.print(battleOptions.get(j));
+                System.out.print("      ");
             }
                 Scanner scanner2 = new Scanner(System.in);
                 String option = scanner.nextLine();
@@ -185,32 +185,70 @@ public class Heromon {
                     int option1 = Integer.parseInt(option);
                     System.out.println("You have chosen to " + battleOptions.get(option1));
 
-                    if(option1 == 0){
+                    if (option1 == 0) {
                         hero.Attack(currentMonster);
 
-                    }
-                    else if(option1 == 1){
+                    } else if (option1 == 1) {
                         hero.Defend();
-                    }
-                    else if(option1 == 2){
+                    } else if (option1 == 2) {
                         hero.Flee(currentMonster);
 
-                    }
-                    else if(option1 == 3){
+                    } else if (option1 == 3) {
                         //Character.powerOn = true;
                         hero.PowerOn(currentMonster);
-                    }
-                    else{
+                    } else {
                         hero.useItem(currentMonster);
-                    }
+                        if (hero.getInventory().size() == 0) {
+                            option = scanner.nextLine();
+                            if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")) {
+                                int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option1));
 
+                                if (option2 == 0) {
+                                    hero.Attack(currentMonster);
+                                } else if (option2 == 1) {
+                                    hero.Defend();
+
+                                } else if (option2 == 2) {
+                                    hero.Flee(currentMonster);
+
+                                } else if (option2 == 3) {
+                                    //Character.powerOn = true;
+                                    hero.PowerOn(currentMonster);
+                                }
+                            }
+                            else {
+                                option = scanner.nextLine();
+                                while (!option.equals("0") && !option.equals("1") && !option.equals("2") && !option.equals("3")) {
+                                    System.out.println("Not valid selection. Please choose between 0 and 3.");
+                                    option = scanner.nextLine();
+                                }
+                                int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option1));
+
+                                if (option2 == 0) {
+                                    hero.Attack(currentMonster);
+                                } else if (option2 == 1) {
+                                    hero.Defend();
+
+                                } else if (option2 == 2) {
+                                    hero.Flee(currentMonster);
+
+                                } else if (option2 == 3) {
+                                    //Character.powerOn = true;
+                                    hero.PowerOn(currentMonster);
+                                }
+                            }
+                        }
+
+                    }
                 }
                 else{
                     while(!option.equals("0") && !option.equals("1") && !option.equals("2") && !option.equals("3") && !option.equals("4")) {
                         System.out.println("Not valid selection. Please choose between 0 and 4.");
                         option = scanner.nextLine();
                     }
-                        int option1 = Integer.parseInt(option);
+                       int option1 = Integer.parseInt(option);
                         System.out.println("You have chosen to " + battleOptions.get(option1));
 
                     if(option1 == 0){
@@ -230,12 +268,47 @@ public class Heromon {
                     }
                     else{
                         hero.useItem(currentMonster);
+                        if(hero.getInventory().size() == 0){
+                            option = scanner.nextLine();
+                            if(option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")){
+
+
+                            }
+
+                        }
+                            else{
+                            option = scanner.nextLine();
+                                while(!option.equals("0") && !option.equals("1") && !option.equals("2") && !option.equals("3")) {
+                                    System.out.println("Not valid selection. Please choose between 0 and 3.");
+                                    option = scanner.nextLine();
+                                }
+                                int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option1));
+
+                                if(option2 == 0){
+                                    hero.Attack(currentMonster);
+                                }
+                                else if(option2 == 1){
+                                    hero.Defend();
+
+                                }
+                                else if(option2 == 2){
+                                    hero.Flee(currentMonster);
+
+                                }
+                                else if(option2 == 3){
+                                    //Character.powerOn = true;
+                                    hero.PowerOn(currentMonster);
+                                }
+                        }
                     }
                 }
+
             turnOver = true;
             if(turnOver == true){
                 currentMonster.aiMove(hero);
                 turnOver = false;
+                System.out.println();
             }
 
             }
