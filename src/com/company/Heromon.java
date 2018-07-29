@@ -164,16 +164,17 @@ public class Heromon {
 
         while(hero.getEnergy() > 0 ){
             System.out.println("Please select the number of your desired course of action."); //function?
-            for(int j = 0; j< battleOptions.size(); j++){
+            for(int j = 0; j< battleOptions.size(); j++) {
                 System.out.print(j + ") ");
                 System.out.println(battleOptions.get(j));
                 System.out.println();
                 Scanner scanner2 = new Scanner(System.in);
                 String option = scanner.nextLine();
 
-                if(option.equals("0") || choice.equals("1") || choice.equals("2") || choice.equals("3") || choice.equals("4"))
-                int option1 = Integer.parseInt(option);
+                if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4")) {
+                    int option1 = Integer.parseInt(option);
 
+                }
             }
 
             //at the start of each turn, prompt user to turn power on or off and to use any items

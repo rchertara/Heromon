@@ -31,12 +31,12 @@ public class Character {
         //random damage on enemy; report levels]
         int randomDam= (int) Math.random(); //confirm what damage range
         mon.energy=mon.energy-randomDam;
-        System.out.println(name+ " attacked, "+ mon.name+ " has taken"+ randomDam+" points of damage!");
+        System.out.println(name+ " attacked, "+ mon.name+ " has lost"+ randomDam+" points of energy!");
         }
 
     public void Defend() {
         inDefense=true;
-        System.out.println(name+ " is in defense mode ");
+        System.out.println(name+ " is in defense mode.");
 
     }
 
@@ -44,7 +44,7 @@ public class Character {
         inDefense=false;
         //first show user all items
         if(getInventory().size()==0){
-            System.out.println("You have no items");
+            System.out.println("You have no items.");
             return;
         }
         else{
@@ -56,7 +56,7 @@ public class Character {
             int choice= scan.nextInt();
 
             while (choice>=getInventory().size()||choice<0){
-                System.out.println("not a valid selection pick again");
+                System.out.println("Not a valid selection. Pick again.");
                 choice=scan.nextInt();
             }
 
@@ -64,28 +64,23 @@ public class Character {
 
             if(item.getInflictDamage()==0){
                 this.energy=this.energy+item.getHealing();
-                System.out.println(name+"used"+item.getName()+",healed up by"+item.getHealing());
+                System.out.println(name+"used"+item.getName()+", and healed "+item.getHealing() + " points of energy.");
                 getInventory().remove(choice);
-
             }
             else{
                 mon.energy=mon.energy-item.getInflictDamage();
-                System.out.println(name+"used"+item.getName()+",inflicted"+item.getInflictDamage() +"points of damage ");
+                System.out.println(name+" used"+item.getName()+", inflicted"+item.getInflictDamage() +" points of damage ");
                 getInventory().remove(choice);
 
             }
-
-
         }
-
     }
-
 
     public void Flee(Monster mon) {
         //if energy is too low, provide flee option;
         //also needs to remove one item
         inDefense=false;
-        System.out.println(name+" has fleed from"+ mon.name);
+        System.out.println(name+" has fled from"+ mon.name);
         if(getInventory().size()!=0) {
             System.out.println(name + " has dropped" + Inventory.get(getInventory().size() - 1).getName());
             Inventory.remove(getInventory().size()-1);
@@ -95,6 +90,10 @@ public class Character {
 
     public void Power(){
         //Krisztina do this lol
+    }
+
+    public void ifWeakness(Monster mon, Character hero){
+        if((mon.monsterPower.getName()).equals(character.powers.getifWeakness))//character has power, go into Power properties
     }
 
     public Powers getYourPower() {
@@ -129,14 +128,5 @@ public class Character {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
-   // }
-        //public int ifWeakness(String weakness){
-        //if monster has weakness power, automatic deduction of 20 energy points in combat
-        //  return energy;
-        //}
-
 
 }
