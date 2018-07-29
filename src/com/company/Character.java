@@ -23,7 +23,7 @@ public class Character {
         this.lives = 3;
         this.Inventory = new ArrayList<Items>();
         this.inDefense = false;
-        this.powerOn = false;
+        //this.powerOn = false;
     }
 
     public String toString() {
@@ -35,7 +35,7 @@ public class Character {
         //random damage on enemy; report levels]
         int randomDam= (int) Math.random(); //confirm what damage range
         mon.energy=mon.energy-randomDam;
-        System.out.println(name + " attacked, "+ mon.name+ " has lost"+ randomDam+" points of energy!");
+        System.out.println(name + " attacked, "+ mon.name+ " has lost "+ randomDam+" points of energy!");
         }
 
     public void Defend() {
@@ -84,7 +84,7 @@ public class Character {
         //if energy is too low, provide flee option;
         //also needs to remove one item
         inDefense=false;
-        System.out.println(name+" has fled from"+ mon.name);
+        System.out.println(name+" has fled from "+ mon.name);
         if(getInventory().size()!=0) {
             System.out.println(name + " has dropped" + Inventory.get(getInventory().size() - 1).getName());
             Inventory.remove(getInventory().size()-1);
@@ -94,9 +94,12 @@ public class Character {
 
 
     public void PowerOn(Monster mon){ //ask to turn power on, type yes
-        powerOn = true;
+        //powerOn = true;
         mon.energy = mon.energy - this.yourPower.getInflictDamage();
         System.out.println("You have used your power against " + mon.name + " and have depleted " + this.yourPower.getInflictDamage() + " points of its energy." );
+
+        this.energy = this.energy - this.yourPower.getEnergyDepletion();
+        System.out.println("You have expended " + this.yourPower.getEnergyDepletion() + " points of your own energy by using your power.");
 
         //Krisztina do this lol
     }

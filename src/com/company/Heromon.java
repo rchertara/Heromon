@@ -172,6 +172,7 @@ public class Heromon {
                 System.out.print(j + ") ");
                 System.out.println(battleOptions.get(j));
                 System.out.println();
+            }
                 Scanner scanner2 = new Scanner(System.in);
                 String option = scanner.nextLine();
 
@@ -246,4 +247,4 @@ public class Heromon {
 
 
     }
-}
+
