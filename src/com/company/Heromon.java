@@ -165,7 +165,7 @@ public class Heromon {
 
         while(hero.getEnergy() > 0 ){ // Check this error with the static/non-static stuff*******
 
-            Character.ifWeakness();
+            //hero.ifWeakness(currentMonster);
 
             System.out.println("Please select the number of your desired course of action."); //function? if item is granted call function and print out, add to inventory
             for(int j = 0; j< battleOptions.size(); j++) {
@@ -180,22 +180,22 @@ public class Heromon {
                     System.out.println("You have chosen to " + battleOptions.get(option1));
 
                     if(option1 == 0){
-                        Character.Attack(currentMonster);
+                        hero.Attack(currentMonster);
 
                     }
                     else if(option1 == 1){
-                        Character.Defend(currentMonster);
+                        hero.Defend();
                     }
                     else if(option1 == 2){
-                        Character.Flee(currentMonster);
+                        hero.Flee(currentMonster);
 
                     }
                     else if(option1 == 3){
                         //Character.powerOn = true;
-                        Character.PowerOn(currentMonster);
+                        hero.PowerOn(currentMonster);
                     }
                     else{
-                        Character.useItem(currentMonster);
+                        hero.useItem(currentMonster);
 
                     }
                 }
@@ -208,22 +208,22 @@ public class Heromon {
                         System.out.println("You have chosen to " + battleOptions.get(option1));
 
                     if(option1 == 0){
-                        Character.Attack(currentMonster);
+                        hero.Attack(currentMonster);
                     }
                     else if(option1 == 1){
-                        Character.Defend(currentMonster);
+                        hero.Defend();
 
                     }
                     else if(option1 == 2){
-                        Character.Flee(currentMonster);
+                        hero.Flee(currentMonster);
 
                     }
                     else if(option1 == 3){
                         //Character.powerOn = true;
-                        Character.PowerOn(currentMonster);
+                        hero.PowerOn(currentMonster);
                     }
                     else{
-                        Character.useItem(currentMonster);
+                        hero.useItem(currentMonster);
                     }
 
                     //now wait for monster to attack!!
