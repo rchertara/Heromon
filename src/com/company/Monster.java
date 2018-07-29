@@ -2,12 +2,14 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Monster {
 
     String name;
     Powers monsterPower;
     int energy;
+    boolean monsterDefense;
     //boolean powerOn;
    // String description;
 
@@ -21,8 +23,16 @@ public class Monster {
     }
 
     public void aiMove(Character hero){
+
         if(this.energy<=100){
             flee();
+        }
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 3 + 1);
+        if(randomNum==1){
+            Defend();
+        }
+        else if(randomNum==2){
+            powerOn(hero);
         }
         else{
             Attack(hero);
@@ -31,36 +41,54 @@ public class Monster {
 
     public void powerOn(Character hero){ //always on? this indicates that the monster is using power AGAINST
         //powerOn = true;
-        hero.setEnergy(hero.getEnergy()-this.monsterPower.getInflictDamage());
-        System.out.println(this.name + " has used its power against you, depleting " + this.monsterPower.getInflictDamage() + " points of your energy." );
+       if(hasWeakness(hero)){
+           hero.setEnergy(hero.getEnergy()-(this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()));
+           System.out.println(this.name + " has used its super effective power against you, depleting " + (this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()) + " points of your energy." );
 
+       }
+       else {
+           hero.setEnergy(hero.getEnergy() - this.monsterPower.getInflictDamage());
+           System.out.println(this.name + " has used its power against you, depleting " + this.monsterPower.getInflictDamage() + " points of your energy.");
+       }
     }
 
-    public void ifWeakness(Character hero){
-        if((hero.getYourPower().getName()).equals(this.monsterPower.getWeakness())){
-            this.energy = this.energy - this.monsterPower.getIfWeakness(); //monster loses energy against weakness
+
+
+    public boolean hasWeakness(Character hero){ //this has to be used within power
+        if((this.monsterPower.getName()).equals(hero.getYourPower().getWeakness())){
+            return true;
+            //this.energy = (this.energy - this.yourPower.getIfWeakness());  //character has power, go into Power properties
+            // System.out.println("You have expended " + this.yourPower.getIfWeakness() + "points of energy protecting against " + mon.name + "'s power.");
+
         }
-        System.out.println(this.name + " has expended " + this.monsterPower.getIfWeakness() + " points of energy protecting itself against your power.");
+        return false;
     }
 
     public void Attack(Character hero) {
-
+        monsterDefense=false;
         //random damage on enemy; report levels]
-        int randomDam= (int) Math.random(); //confirm what damage range
+        int randomNum = ThreadLocalRandom.current().nextInt(50, 100 + 1);
         if(hero.inDefense){
-            randomDam=randomDam/2;//lower the attack damage done
+            randomNum=randomNum/2;//lower the attack damage done
 
         }
-        hero.setEnergy(hero.getEnergy()-randomDam);
+        hero.setEnergy(hero.getEnergy()-randomNum);
         if(!hero.inDefense) {
-            System.out.println(name + " attacked, " + hero.getName() + " has taken" + randomDam + " points of damage!");
+            System.out.println(name + " attacked, " + hero.getName() + " has taken" + randomNum + " points of damage!");
         }
         else{
-            System.out.println(name + " attacked however, " + hero.getName() + "defended, received only" + randomDam + " points of damage!");
+            System.out.println(name + " attacked however, " + hero.getName() + "defended, received only" + randomNum + " points of damage!");
         }
     }
 
+    public void Defend() {
+        monsterDefense=true;
+        System.out.println(name+ " is in defense mode.");
+
+    }
+
     public void flee(){
+        monsterDefense=false;
         System.out.println(name+" has fled from the battle");
 
     }
