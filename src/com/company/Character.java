@@ -33,10 +33,18 @@ public class Character {
 
     public void Attack(Monster mon) {
         inDefense=false;
+
         //random damage on enemy; report levels]
         int randomNum = ThreadLocalRandom.current().nextInt(50, 100 + 1);
-        mon.energy=mon.energy-randomNum;
-        System.out.println(name + " attacked, "+ mon.name+ " has lost "+ randomNum+" points of energy!");
+        if(mon.monsterDefense==true){
+            randomNum=randomNum/2;
+            mon.energy = mon.energy - randomNum;
+            System.out.println(name + " attacked, but monster has defended so " + mon.name + " only lost " + randomNum + " points of energy");
+        }
+        else {
+            mon.energy = mon.energy - randomNum;
+            System.out.println(name + " attacked, " + mon.name + " has lost " + randomNum + " points of energy!");
+        }
         }
 
     public void Defend() {
@@ -96,20 +104,32 @@ public class Character {
 
     public void PowerOn(Monster mon){ //ask to turn power on, type yes
         //powerOn = true;
-        mon.energy = mon.energy - this.yourPower.getInflictDamage();
-        System.out.println("You have used your power against " + mon.name + " and have depleted " + this.yourPower.getInflictDamage() + " points of its energy." );
+        if(hasWeakness(mon)){
+            mon.energy = mon.energy - (this.yourPower.getInflictDamage()+mon.monsterPower.getIfWeakness());
+            System.out.println("You have used your super effective power against " + mon.name + " and have depleted " + (this.yourPower.getInflictDamage()+mon.monsterPower.getIfWeakness()) + " points of its energy." );
 
-        this.energy = this.energy - this.yourPower.getEnergyDepletion();
-        System.out.println("You have expended " + this.yourPower.getEnergyDepletion() + " points of your own energy by using your power.");
+            this.energy = this.energy - this.yourPower.getEnergyDepletion();
+            System.out.println("You have expended " + this.yourPower.getEnergyDepletion() + " points of your own energy by using your power.");
 
+        }
+        else {
+            mon.energy = mon.energy - this.yourPower.getInflictDamage();
+            System.out.println("You have used your power against " + mon.name + " and have depleted " + this.yourPower.getInflictDamage() + " points of its energy.");
+
+            this.energy = this.energy - this.yourPower.getEnergyDepletion();
+            System.out.println("You have expended " + this.yourPower.getEnergyDepletion() + " points of your own energy by using your power.");
+        }
         //Krisztina do this lol
     }
 
-    public void ifWeakness(Monster mon){
-        if((mon.monsterPower.getName()).equals(this.yourPower.getWeakness())){
-           this.energy = (this.energy - this.yourPower.getIfWeakness());  //character has power, go into Power properties
-            System.out.println("You have expended " + this.yourPower.getIfWeakness() + "points of energy protecting against " + mon.name + "'s power.");
+    public boolean hasWeakness(Monster mon){ //this has to be used within power
+        if((mon.monsterPower.getWeakness()).equals(this.yourPower.getName())){
+            return true;
+           //this.energy = (this.energy - this.yourPower.getIfWeakness());  //character has power, go into Power properties
+           // System.out.println("You have expended " + this.yourPower.getIfWeakness() + "points of energy protecting against " + mon.name + "'s power.");
+
         }
+        return false;
     }
 
     public Powers getYourPower() {
