@@ -34,7 +34,7 @@ public class Heromon {
         Powers foresight = new Powers("Foresight",90, 30, "Teleportation", 20, "See into the future. Increases attack by 90 energy points, but depletes your own energy by 30 points. If faced with an enemy bearing Teleportation, an extra 20 points of energy are expended in defense." );
         Powers.add(foresight);
 
-        Powers invisibility = new Powers("Invisibility",100, 40, "Heat Vision", 20, "Remove yourself from sight. Increases attack by 100 energy points, but depletes your own energy by 40 points. If faced with an enemy bearing Heat Vision, an extra 50 points of energy are expended in defense.");
+        Powers invisibility = new Powers("Invisibility",100, 40, "Heat Vision", 20, "Remove yourself from sight. Increases attack by 100 energy points, but depletes your own energy by 40 points. If faced with an enemy bearing Heat Vision, an extra 20 points of energy are expended in defense.");
         Powers. add(invisibility);
 
         Powers teleportation = new Powers("Teleportation",140, 70, "Freeze Time", 20, "Transport your own body from one location to another instantly. Increases attack by 140 energy points, but depletes your own energy by 70 points. If faced with an enemy bearing Freeze Time, an extra 20 points of energy are expended in defense.");
@@ -322,6 +322,7 @@ public class Heromon {
                   System.out.println("You have been granted " + hero.getInventory().get(0));
                     break;
                 }
+
                 System.out.println();
                 hero.healthStatusHero();
                 currentMonster.healthStatusMonster();
