@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 public class Heromon {
 
+   public static boolean turnOver = false;
+
    /* public static boolean roundOver(int heroEnergy, int monsterEnergy){
         if(hero.getEnergy() == 0 || currentMonster.getEnergy() == 0) {
             return true;
         }
         return false;
     } */
+
 
     public static void main(String[] args) {
 
@@ -156,6 +159,8 @@ public class Heromon {
 
         //*****BATTLE START*****
 
+        //boolean turnOver = false;
+
         ArrayList<String>battleOptions = new ArrayList<String>();
         battleOptions.add("Attack");
         battleOptions.add("Defend");
@@ -197,8 +202,8 @@ public class Heromon {
                     }
                     else{
                         hero.useItem(currentMonster);
-
                     }
+
                 }
                 else{
                     while(!option.equals("0") && !option.equals("1") && !option.equals("2") && !option.equals("3") && !option.equals("4")) {
@@ -226,10 +231,13 @@ public class Heromon {
                     else{
                         hero.useItem(currentMonster);
                     }
-
-                    //now wait for monster to attack!!
-
                 }
+            turnOver = true;
+            if(turnOver == true){
+                currentMonster.aiMove(hero);
+                turnOver = false;
+            }
+
             }
 
             //at the start of each turn, prompt user to turn power on or off and to use any items
@@ -240,11 +248,5 @@ public class Heromon {
 
 
         }
-
-
-
-
-
-
     }
 
