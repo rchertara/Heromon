@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Monster {
 
@@ -46,17 +47,17 @@ public class Monster {
     public void Attack(Character hero) {
 
         //random damage on enemy; report levels]
-        int randomDam= (int) Math.random(); //confirm what damage range
+        int randomNum = ThreadLocalRandom.current().nextInt(50, 100 + 1);
         if(hero.inDefense){
-            randomDam=randomDam/2;//lower the attack damage done
+            randomNum=randomNum/2;//lower the attack damage done
 
         }
-        hero.setEnergy(hero.getEnergy()-randomDam);
+        hero.setEnergy(hero.getEnergy()-randomNum);
         if(!hero.inDefense) {
-            System.out.println(name + " attacked, " + hero.getName() + " has taken" + randomDam + " points of damage!");
+            System.out.println(name + " attacked, " + hero.getName() + " has taken" + randomNum + " points of damage!");
         }
         else{
-            System.out.println(name + " attacked however, " + hero.getName() + "defended, received only" + randomDam + " points of damage!");
+            System.out.println(name + " attacked however, " + hero.getName() + "defended, received only" + randomNum + " points of damage!");
         }
     }
 

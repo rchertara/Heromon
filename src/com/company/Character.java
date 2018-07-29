@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {
 
@@ -33,9 +34,9 @@ public class Character {
     public void Attack(Monster mon) {
         inDefense=false;
         //random damage on enemy; report levels]
-        int randomDam= (int) Math.random(); //confirm what damage range
-        mon.energy=mon.energy-randomDam;
-        System.out.println(name + " attacked, "+ mon.name+ " has lost "+ randomDam+" points of energy!");
+        int randomNum = ThreadLocalRandom.current().nextInt(50, 100 + 1);
+        mon.energy=mon.energy-randomNum;
+        System.out.println(name + " attacked, "+ mon.name+ " has lost "+ randomNum+" points of energy!");
         }
 
     public void Defend() {
