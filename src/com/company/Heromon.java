@@ -308,10 +308,24 @@ public class Heromon {
                         }
                     }
                 }
+                System.out.println();
+               hero.healthStatusHero();
+                currentMonster.healthStatusMonster();
+                System.out.println();
 
             turnOver = true;
             if(turnOver == true){
                 currentMonster.aiMove(hero);
+                if(currentMonster.hasFled== true){
+                   Items i= com.company.Items.GrantItem(Items);
+                   hero.getInventory().add(i);
+                  System.out.println("You have been granted " + hero.getInventory().get(0));
+                    break;
+                }
+                System.out.println();
+                hero.healthStatusHero();
+                currentMonster.healthStatusMonster();
+                System.out.println();
                 turnOver = false;
                 System.out.println();
             }

@@ -10,6 +10,7 @@ public class Monster {
     Powers monsterPower;
     int energy;
     boolean monsterDefense;
+    boolean hasFled;
     //boolean powerOn;
    // String description;
 
@@ -17,19 +18,22 @@ public class Monster {
         this.name = name;
         this.monsterPower = monsterPower;
         this.energy = energy;
+        this.hasFled = false;
+        this.monsterDefense = false;
         //powerOn = false; // do we want this?
         //this.description = description;
 
     }
 
     public void healthStatusMonster(){
-        System.out.println("The " + name + " currently has" + this.energy + " points of energy.");
+        System.out.println("The " + name + " currently has " + this.energy + " points of energy.");
     }
 
     public void aiMove(Character hero){
 
         if(this.energy<=100){
             flee();
+            return;
         }
         int randomNum = ThreadLocalRandom.current().nextInt(1, 3 + 1);
         if(randomNum==1){
@@ -82,7 +86,7 @@ public class Monster {
             System.out.println(name + " attacked, " + hero.getName() + " has taken " + randomNum + " points of damage!");
         }
         else{
-            System.out.println(name + " attacked however, " + hero.getName() + " defended, received only" + randomNum + " points of damage!");
+            System.out.println(name + " attacked! However, " + hero.getName() + " defended, and received only " + randomNum + " points of damage!");
         }
     }
 
@@ -94,6 +98,7 @@ public class Monster {
 
     public void flee(){
         monsterDefense=false;
+        hasFled = true;
         System.out.println(name+" has fled from the battle");
 
     }
