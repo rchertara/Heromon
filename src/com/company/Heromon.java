@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Heromon {
 
+    //win conditions: if monster flees or energy is 0/below; lose conditions: you die; you flee (technically not a loss)
+
    public static boolean turnOver = false;
 
    /* public static boolean roundOver(int heroEnergy, int monsterEnergy){
@@ -165,7 +167,7 @@ public class Heromon {
         battleOptions.add("Attack");
         battleOptions.add("Defend");
         battleOptions.add("Flee");
-        battleOptions.add("Power On");
+        battleOptions.add("Power Up");
         battleOptions.add("Use an item");
 
         while(hero.getEnergy() > 0 ){ // Check this error with the static/non-static stuff*******
@@ -184,6 +186,11 @@ public class Heromon {
                 if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4")) {
                     int option1 = Integer.parseInt(option);
                     System.out.println("You have chosen to " + battleOptions.get(option1));
+                    
+                    System.out.println();
+                    hero.healthStatusHero();
+                    currentMonster.healthStatusMonster();
+                    System.out.println();
 
                     if (option1 == 0) {
                         hero.Attack(currentMonster);
@@ -203,7 +210,12 @@ public class Heromon {
                             option = scanner.nextLine();
                             if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")) {
                                 int option2 = Integer.parseInt(option);
+
                                 System.out.println("You have chosen to " + battleOptions.get(option1));
+                                System.out.println();
+                                hero.healthStatusHero();
+                                currentMonster.healthStatusMonster();
+                                System.out.println();
 
                                 if (option2 == 0) {
                                     hero.Attack(currentMonster);
@@ -227,6 +239,11 @@ public class Heromon {
                                 }
                                 int option2 = Integer.parseInt(option);
                                 System.out.println("You have chosen to " + battleOptions.get(option1));
+
+                                System.out.println();
+                                hero.healthStatusHero();
+                                currentMonster.healthStatusMonster();
+                                System.out.println();
 
                                 if (option2 == 0) {
                                     hero.Attack(currentMonster);
