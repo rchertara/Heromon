@@ -210,13 +210,14 @@ public class Heromon {
                             option = scanner.nextLine();
                             if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")) {
                                 int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option2));
 
                                 System.out.println();
                                 hero.healthStatusHero();
                                 currentMonster.healthStatusMonster();
                                 System.out.println();
 
-                                System.out.println("You have chosen to " + battleOptions.get(option1));
+
 
 
                                 if (option2 == 0) {
@@ -240,12 +241,13 @@ public class Heromon {
                                     option = scanner.nextLine();
                                 }
                                 int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option2));
 
                                 System.out.println();
                                 hero.healthStatusHero();
                                 currentMonster.healthStatusMonster();
                                 System.out.println();
-                                System.out.println("You have chosen to " + battleOptions.get(option1));
+
 
 
                                 if (option2 == 0) {
@@ -272,13 +274,15 @@ public class Heromon {
                         option = scanner.nextLine();
                     }
                        int option1 = Integer.parseInt(option);
+                    System.out.println("You have chosen to " + battleOptions.get(option1));
+
 
                     System.out.println();
                     hero.healthStatusHero();
                     currentMonster.healthStatusMonster();
                     System.out.println();
 
-                    System.out.println("You have chosen to " + battleOptions.get(option1));
+
 
                     if(option1 == 0){
                         hero.Attack(currentMonster);
@@ -313,13 +317,14 @@ public class Heromon {
                                     option = scanner.nextLine();
                                 }
                                 int option2 = Integer.parseInt(option);
+                            System.out.println("You have chosen to " + battleOptions.get(option2));
 
                             System.out.println();
                             hero.healthStatusHero();
                             currentMonster.healthStatusMonster();
                             System.out.println();
 
-                                System.out.println("You have chosen to " + battleOptions.get(option1));
+
 
                                 if(option2 == 0){
                                     hero.Attack(currentMonster);
