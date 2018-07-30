@@ -368,7 +368,7 @@ public class Heromon {
                 }
 
             }
-
+            hero.setEnergy(1000);
             //at the start of each turn, prompt user to turn power on or off and to use any items
             //print updated damage to
 
