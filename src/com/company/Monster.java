@@ -11,6 +11,7 @@ public class Monster {
     int energy;
     boolean monsterDefense;
     boolean hasFled;
+    boolean deadMonster;
     //boolean powerOn;
    // String description;
 
@@ -20,6 +21,7 @@ public class Monster {
         this.energy = energy;
         this.hasFled = false;
         this.monsterDefense = false;
+        this.deadMonster = false;
         //powerOn = false; // do we want this?
         //this.description = description;
 
@@ -31,8 +33,15 @@ public class Monster {
 
     public void aiMove(Character hero){
 
-        if(this.energy<=100){
+        if((this.energy <= 0) && (hero.getEnergy() > 0)){
+            deadMonster = true;
+            System.out.println("The monster has been defeated! You have won this battle!");
+            return;
+        }
+
+        if(this.energy>0 && this.energy <=100){
             flee();
+            System.out.println("You have won this battle!");
             return;
         }
         int randomNum = ThreadLocalRandom.current().nextInt(1, 3 + 1);

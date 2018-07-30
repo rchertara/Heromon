@@ -13,6 +13,7 @@ public class Character {
     private int energy;
     private int lives;
     boolean powerOn;
+    boolean deadHero;
 
     ArrayList<Items> Inventory;
 
@@ -25,6 +26,15 @@ public class Character {
         this.Inventory = new ArrayList<Items>();
         this.inDefense = false;
         //this.powerOn = false;
+        this.deadHero = false;
+    }
+
+    public void LoseBattle(){
+        if(this.getEnergy() <= 0){
+            deadHero=true;
+            System.out.println("You have been defeated.");
+            return;
+        }
     }
 
     public void healthStatusHero(){
