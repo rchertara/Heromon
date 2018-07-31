@@ -12,6 +12,7 @@ public class Heromon {
    //public static boolean dead = false;
    public static boolean win = false;
    public static int totalWins = 0;
+   public static int lives = 3;
 
    /* public static boolean roundOver(int heroEnergy, int monsterEnergy){
         if(hero.getEnergy() == 0 || currentMonster.getEnergy() == 0) {
@@ -152,7 +153,7 @@ public class Heromon {
 
         // System.out.println(hero);
         System.out.println();
-        System.out.println("Brave traveler, be on the look-out for monsters!");
+        System.out.println("Brave traveler, be on the look-out for monsters! At the turn of each round, you shall begin with 1000 points of energy. ");
         System.out.println();
 
         while (totalWins <= 5) { //should provide 5 random monsters!
@@ -361,14 +362,20 @@ public class Heromon {
 
                     hero.LoseBattle();
                     if (hero.deadHero == true) {
+                        lives--;
                         break;
                     }
 
 
                 }
 
+
             }
             hero.setEnergy(1000);
+            System.out.println("You have defeated " + totalWins + " total monster(s). Never give up!");
+            System.out.println("You have " + lives + " lives remaining.");
+            System.out.println();
+
             //at the start of each turn, prompt user to turn power on or off and to use any items
             //print updated damage to
 

@@ -22,7 +22,7 @@ public class Character {
         this.name = name;
         this.yourPower = yourPower; //?
         this.energy = 1000;
-        this.lives = 3;
+        //this.lives = 3;
         this.Inventory = new ArrayList<Items>();
         this.inDefense = false;
         //this.powerOn = false;
