@@ -62,8 +62,8 @@ public class Monster {
        if(hasWeakness(hero)){
            hero.setEnergy(hero.getEnergy()-(this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()));
            System.out.println(this.name + " has used its super effective power against you, depleting " + (this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()) + " points of your energy." );
-
        }
+
        else {
            hero.setEnergy(hero.getEnergy() - this.monsterPower.getInflictDamage());
            System.out.println(this.name + " has used its power against you, depleting " + this.monsterPower.getInflictDamage() + " points of your energy.");
@@ -125,5 +125,8 @@ public class Monster {
 
     public int getEnergy() {
         return energy;
+    }
+    public void setEnergy(int energy){
+        this.energy = energy;
     }
 }

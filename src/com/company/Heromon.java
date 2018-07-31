@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Heromon {
 
+    //still need to fix item spaces and switch to monster after item use
+
     //win conditions: if monster flees or energy is 0/below; lose conditions: you die; you flee (technically not a loss)
 
    public static boolean turnOver = false;
@@ -93,8 +95,8 @@ public class Heromon {
         Items magicWand = new Items("Magic Wand", 100, "Cast a spell and send your enemy to his fate! 100 points of damage.", 0);
         Items.add(magicWand);
 
-        Items ancientSword = new Items("Ancient Sword", 50, "Harness the power of knights before you. Takes 50 points of energy from your enemy.", 0);
-        Items.add(ancientSword);
+        Items antiqueSword = new Items("Antique Sword", 50, "Harness the power of knights before you. Takes 50 points of energy from your enemy.", 0);
+        Items.add(antiqueSword);
 
         Items tallGlassOfWater = new Items("Tall Glass of Water", 0, "Take a drink and replenish 30 points of energy.", 30);
         Items.add(tallGlassOfWater);
@@ -156,7 +158,7 @@ public class Heromon {
         System.out.println("Brave traveler, be on the look-out for monsters! At the turn of each round, you shall begin with 1000 points of energy. ");
         System.out.println();
 
-        while (totalWins <= 5 && lives > 0) { //should provide 5 random monsters!
+        while (totalWins < 5 && lives > 0) { //should provide 5 random monsters!
 
             System.out.println("There's rustling in those bushes...");
             Monster currentMonster = Monster.Generate(Monsters);//to call methods from other classes, use class name dot method and then input
@@ -185,7 +187,7 @@ public class Heromon {
                 for (int j = 0; j < battleOptions.size(); j++) {
                     System.out.print(j + ") ");
                     System.out.print(battleOptions.get(j));
-                    System.out.print("      ");
+                    System.out.print("    ");
                 }
                 Scanner scanner2 = new Scanner(System.in);
                 String option = scanner.nextLine();
@@ -196,7 +198,7 @@ public class Heromon {
                     hero.healthStatusHero();
                     currentMonster.healthStatusMonster();
                     System.out.println();
-                    System.out.println("You have chosen to " + battleOptions.get(option1));
+                    System.out.println("You have chosen to " + battleOptions.get(option1) + "!");
 
 
                     if (option1 == 0) {
@@ -204,6 +206,7 @@ public class Heromon {
 
                     } else if (option1 == 1) {
                         hero.Defend();
+
                     } else if (option1 == 2) {
                         hero.Flee(currentMonster);
                         break;
@@ -211,13 +214,17 @@ public class Heromon {
                     } else if (option1 == 3) {
                         //Character.powerOn = true;
                         hero.PowerOn(currentMonster);
+
                     } else {
-                        hero.useItem(currentMonster);
-                        if (hero.getInventory().size() == 0) {
+                       if(hero.getInventory().size() >0){
+                           hero.useItem(currentMonster);
+                           //break;
+                       }
+                        else if (hero.getInventory().size() == 0) {
                             option = scanner.nextLine();
                             if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")) {
                                 int option2 = Integer.parseInt(option);
-                                System.out.println("You have chosen to " + battleOptions.get(option2));
+                                System.out.println("You have chosen to " + battleOptions.get(option2) + "!");
 
                                 System.out.println();
                                 hero.healthStatusHero();
@@ -245,7 +252,7 @@ public class Heromon {
                                     option = scanner.nextLine();
                                 }
                                 int option2 = Integer.parseInt(option);
-                                System.out.println("You have chosen to " + battleOptions.get(option2));
+                                System.out.println("You have chosen to " + battleOptions.get(option2) + "!");
 
                                 System.out.println();
                                 hero.healthStatusHero();
@@ -276,7 +283,7 @@ public class Heromon {
                         option = scanner.nextLine();
                     }
                     int option1 = Integer.parseInt(option);
-                    System.out.println("You have chosen to " + battleOptions.get(option1));
+                    System.out.println("You have chosen to " + battleOptions.get(option1) + "!");
 
 
                     System.out.println();
@@ -297,11 +304,33 @@ public class Heromon {
                     } else if (option1 == 3) {
                         //Character.powerOn = true;
                         hero.PowerOn(currentMonster);
+
                     } else {
-                        hero.useItem(currentMonster);
-                        if (hero.getInventory().size() == 0) {
+                        if(hero.getInventory().size() >0){
+                            hero.useItem(currentMonster);
+                           // break;
+                        }
+                        else if (hero.getInventory().size() == 0) {
                             option = scanner.nextLine();
                             if (option.equals("0") || option.equals("1") || option.equals("2") || option.equals("3")) {
+
+                                int option2 = Integer.parseInt(option);
+                                System.out.println("You have chosen to " + battleOptions.get(option1) + "!");
+
+
+                                if (option2 == 0) {
+                                    hero.Attack(currentMonster);
+                                } else if (option2 == 1) {
+                                    hero.Defend();
+
+                                } else if (option2 == 2) {
+                                    hero.Flee(currentMonster);
+                                    break;
+
+                                } else if (option2 == 3) {
+                                    //Character.powerOn = true;
+                                    hero.PowerOn(currentMonster);
+                                }
 
                             }
 
@@ -312,7 +341,7 @@ public class Heromon {
                                 option = scanner.nextLine();
                             }
                             int option2 = Integer.parseInt(option);
-                            System.out.println("You have chosen to " + battleOptions.get(option2));
+                            System.out.println("You have chosen to " + battleOptions.get(option2) + "!");
 
                             System.out.println();
                             hero.healthStatusHero();
@@ -342,16 +371,36 @@ public class Heromon {
                 System.out.println();
 
                 turnOver = true;
+
+                //if(check your health?)
+
+                if(currentMonster.deadMonster){ //may kill monster during turn in which case, don't need?
+                    win = true;
+                    if(win) {
+                        totalWins++;
+                        Items i = com.company.Items.GrantItem(Items);
+                        hero.getInventory().add(i);
+                        int j = hero.getInventory().indexOf(i);
+                        System.out.println("You have been granted " + hero.getInventory().get(j));
+                        System.out.println();
+                        break;
+                    }
+                }
+
+                //allow monster to make move, may deplete its own energy as well.
                 if (turnOver == true) {
                     currentMonster.aiMove(hero);
                     if (currentMonster.hasFled == true || currentMonster.deadMonster == true) {
                         win = true;
-                        totalWins++;
-                        Items i = com.company.Items.GrantItem(Items);
-                        hero.getInventory().add(i);
-                        System.out.println("You have been granted " + hero.getInventory().get(0));
-                        System.out.println();
-                        break;
+                        if(win) {
+                            totalWins++;
+                            Items i = com.company.Items.GrantItem(Items);
+                            hero.getInventory().add(i);
+                            int j = hero.getInventory().indexOf(i);
+                            System.out.println("You have been granted " + hero.getInventory().get(j));
+                            System.out.println();
+                            break;
+                        }
                     }
                     System.out.println();
                     hero.healthStatusHero();
@@ -361,17 +410,15 @@ public class Heromon {
                     System.out.println();
 
                     hero.LoseBattle();
-                    if (hero.deadHero == true) {
+                    if (hero.deadHero) {
                         lives--;
                         break;
                     }
-
-
                 }
-
-
             }
+
             hero.setEnergy(1000);
+            currentMonster.setEnergy(500);
             System.out.println("You have defeated " + totalWins + " total monster(s). Never give up!");
             System.out.println("You have " + lives + " lives remaining.");
             System.out.println();
@@ -385,8 +432,9 @@ public class Heromon {
             System.out.println("Alas, you have not succeeded in your journey. Take some time to rest and begin again later.");
         }
         if(totalWins>=5){
-            System.out.println("Congratulations! You have proven yourself a worthy warrior. Good luck on your future endeavors.");
+            System.out.println("Congratulations! You have proven yourself a worthy warrior. Good luck with your future endeavors.");
         }
     }
+
     }
 

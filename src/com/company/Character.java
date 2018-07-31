@@ -77,9 +77,9 @@ public class Character {
             return;
         }
         else{
-
+            System.out.println("Please select the number of your desired item from the list below.");
             for(int i=0;i<getInventory().size();i++){
-                System.out.println(i+" " + getInventory().get(i).getName());
+                System.out.println(i+") " + getInventory().get(i).getName());
             }
             Scanner scan= new Scanner(System.in);
             int choice= scan.nextInt();
@@ -93,13 +93,15 @@ public class Character {
 
             if(item.getInflictDamage()==0){
                 this.energy=this.energy+item.getHealing();
-                System.out.println(name+"used"+item.getName()+", and healed "+item.getHealing() + " points of energy.");
+                System.out.println(name+" used "+item.getName()+", and healed "+item.getHealing() + " points of energy.");
                 getInventory().remove(choice);
+                return;
             }
             else{
                 mon.energy=mon.energy-item.getInflictDamage();
-                System.out.println(name+" used"+item.getName()+", inflicted"+item.getInflictDamage() +" points of damage ");
+                System.out.println(name+" used "+item.getName()+", and inflicted "+item.getInflictDamage() +" points of damage. ");
                 getInventory().remove(choice);
+                return;
 
             }
         }
@@ -109,9 +111,9 @@ public class Character {
         //if energy is too low, provide flee option;
         //also needs to remove one item
         inDefense=false;
-        System.out.println(name+" has fled from "+ mon.name);
+        System.out.println(name+" has fled from "+ mon.name + ".");
         if(getInventory().size()!=0) {
-            System.out.println(name + " has dropped" + Inventory.get(getInventory().size() - 1).getName());
+            System.out.println(name + " has dropped " + Inventory.get(getInventory().size() - 1).getName() + "!");
             Inventory.remove(getInventory().size()-1);
 
         }
