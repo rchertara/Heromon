@@ -156,7 +156,7 @@ public class Heromon {
         System.out.println("Brave traveler, be on the look-out for monsters! At the turn of each round, you shall begin with 1000 points of energy. ");
         System.out.println();
 
-        while (totalWins <= 5) { //should provide 5 random monsters!
+        while (totalWins <= 5 && lives > 0) { //should provide 5 random monsters!
 
             System.out.println("There's rustling in those bushes...");
             Monster currentMonster = Monster.Generate(Monsters);//to call methods from other classes, use class name dot method and then input
@@ -380,6 +380,12 @@ public class Heromon {
             //print updated damage to
 
 
+        }
+        if(lives ==0){
+            System.out.println("Alas, you have not succeeded in your journey. Take some time to rest and begin again later.");
+        }
+        if(totalWins>=5){
+            System.out.println("Congratulations! You have proven yourself a worthy warrior. Good luck on your future endeavors.");
         }
     }
     }
