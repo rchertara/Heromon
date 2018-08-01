@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Heromon {
 
+    // 7/31 random bug, adjust monster energy? user interface
+
     //still need to fix item spaces and switch to monster after item use
 
     //win conditions: if monster flees or energy is 0/below; lose conditions: you die; you flee (technically not a loss)
@@ -374,7 +376,7 @@ public class Heromon {
 
                 //if(check your health?)
 
-                if(currentMonster.deadMonster){ //may kill monster during turn in which case, don't need?
+               /* if(currentMonster.deadMonster){ //may kill monster during turn in which case, don't need?
                     win = true;
                     if(win) {
                         totalWins++;
@@ -385,7 +387,7 @@ public class Heromon {
                         System.out.println();
                         break;
                     }
-                }
+                } */
 
                 //allow monster to make move, may deplete its own energy as well.
                 if (turnOver == true) {

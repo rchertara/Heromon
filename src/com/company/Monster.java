@@ -86,6 +86,7 @@ public class Monster {
         monsterDefense=false;
         //random damage on enemy; report levels]
         int randomNum = ThreadLocalRandom.current().nextInt(50, 100 + 1);
+
         if(hero.inDefense){
             randomNum=randomNum/2;//lower the attack damage done
 
