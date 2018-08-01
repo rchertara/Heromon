@@ -393,6 +393,7 @@ public class Heromon {
                 if (turnOver == true) {
                     currentMonster.aiMove(hero);
                     if (currentMonster.hasFled == true || currentMonster.deadMonster == true) {
+                //        Monsters.remove(currentMonster);
                         win = true;
                         if(win) {
                             totalWins++;
@@ -421,6 +422,10 @@ public class Heromon {
 
             hero.setEnergy(1000);
             currentMonster.setEnergy(500);
+            currentMonster.deadMonster=false;
+            currentMonster.hasFled=false;
+            currentMonster.monsterDefense=false;
+
             System.out.println("You have defeated " + totalWins + " total monster(s). Never give up!");
             System.out.println("You have " + lives + " lives remaining.");
             System.out.println();
