@@ -7,13 +7,9 @@ import javax.swing.*;
 // Hence, we use a Swing application.
 public class Sound extends JFrame {
    
-   // Constructor
-   public Sound() {
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setTitle("Test Sound Clip");
-      this.setSize(300, 200);
-      this.setVisible(true);
+  
    
+      public void playSound(){
       try {
          // Open an audio input stream.
          File soundFile = new File("Game of Thrones.wav");
@@ -34,7 +30,7 @@ public class Sound extends JFrame {
    
    public static void main(String[] args) {
       new Sound();
- 
+   
 
    }
 }
