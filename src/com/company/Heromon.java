@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Heromon {
 
-    // 7/31 random bug, adjust monster energy? user interface
+    // 8/1 user interface
 
     //still need to fix item spaces and switch to monster after item use
 
