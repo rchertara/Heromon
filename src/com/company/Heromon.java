@@ -162,7 +162,7 @@ public class Heromon {
         // System.out.println(hero);
         System.out.println();
         System.out.println("Brave traveler, be on the look-out for monsters! ");
-        System.out.println("At the turn of each round, you shall begin with 1000 points of energy; enemies begin with 500 energy points, but this increases by 125 each time you win a round.");
+        System.out.println("At the turn of each round, you shall begin with 1000 points of energy; enemies begin with 500 energy points, but this increases by 125 each time you defeat a monster.");
         System.out.println();
 
         while (totalWins < 5 && lives > 0) { //should provide 5 random monsters!
