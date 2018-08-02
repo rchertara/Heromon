@@ -11,8 +11,8 @@ public class Character {
     private Powers yourPower;
     boolean inDefense;
     private int energy;
-    private int lives;
-    boolean powerOn;
+    //private int lives;
+   // boolean powerOn;
     boolean deadHero;
 
     ArrayList<Items> Inventory;
@@ -53,7 +53,7 @@ public class Character {
         if(mon.monsterDefense==true){
             randomNum=randomNum/2;
             mon.energy = mon.energy - randomNum;
-            System.out.println(name + " attacked, but monster has defended so " + mon.name + " only lost " + randomNum + " points of energy");
+            System.out.println(name + " attacked, but the enemy has defended so " + mon.name + " only lost " + randomNum + " points of energy");
         }
 
         else {

@@ -62,11 +62,19 @@ public class Monster {
        if(hasWeakness(hero)){
            hero.setEnergy(hero.getEnergy()-(this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()));
            System.out.println(this.name + " has used its super effective power against you, depleting " + (this.monsterPower.getInflictDamage()+hero.getYourPower().getIfWeakness()) + " points of your energy." );
+
+           this.energy = this.energy - this.monsterPower.getEnergyDepletion();
+           System.out.println("The enemy has expended " + this.monsterPower.getEnergyDepletion() + " points of energy by using its power.");
+
        }
 
        else {
            hero.setEnergy(hero.getEnergy() - this.monsterPower.getInflictDamage());
            System.out.println(this.name + " has used its power against you, depleting " + this.monsterPower.getInflictDamage() + " points of your energy.");
+
+           this.energy = this.energy - this.monsterPower.getEnergyDepletion();
+           System.out.println("The enemy has expended " + this.monsterPower.getEnergyDepletion() + " points of energy by using its power.");
+
        }
     }
 
@@ -109,7 +117,7 @@ public class Monster {
     public void flee(){
         monsterDefense=false;
         hasFled = true;
-        System.out.println(name+" has fled from the battle");
+        System.out.println(name+" has fled from the battle!");
 
     }
 
