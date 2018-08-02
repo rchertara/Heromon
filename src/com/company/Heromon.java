@@ -490,7 +490,7 @@ public class Heromon {
                 System.out.println("Alas, " + yourName +"! You have not succeeded in your journey. Take some time to rest and begin again later.");
                 }
                 if(totalWins>=5){
-                System.out.println("Congratulations, " + yourName +"! You have proven yourself a worthy warrior. Good luck with your future endeavors.");
+                System.out.println("Congratulations, " + yourName +"! You have proven yourself a worthy hero. Good luck with your future endeavors.");
                 }
                 }
 
