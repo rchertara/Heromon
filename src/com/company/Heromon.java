@@ -13,10 +13,11 @@ public class Heromon {
     //win conditions: if monster flees or energy is 0/below; lose conditions: you die; you flee (technically not a loss)
 
    public static boolean turnOver = false;
-   //public static boolean dead = false;
    public static boolean win = false;
    public static int totalWins = 0;
    public static int lives = 3;
+
+
 
    /* public static boolean roundOver(int heroEnergy, int monsterEnergy){
         if(hero.getEnergy() == 0 || currentMonster.getEnergy() == 0) {
@@ -148,6 +149,7 @@ public class Heromon {
 
                 System.out.println("Invalid selection. Please choose between 0 and 7.");
                 choice = scanner1.nextLine();
+            }
                 //} check if this is better for loop
                 int choice1 = Integer.parseInt(choice);
                 System.out.print("You have chosen " + (Powers.get(choice1)).getName());
@@ -156,7 +158,7 @@ public class Heromon {
                 System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 yourPower = (Powers.get(choice1));
                 hero = new Character(yourName, yourPower);
-            }
+
         }
 
         // System.out.println(hero);
