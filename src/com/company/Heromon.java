@@ -28,8 +28,8 @@ public class Heromon {
 
 
     public static void main(String[] args) {
-         Sound s = new Sound();
-         s.playSound();
+         
+
         ArrayList<Powers> Powers = new ArrayList<Powers>();
         ArrayList<Monster> Monsters = new ArrayList<Monster>();
         ArrayList<Items> Items = new ArrayList<Items>();
